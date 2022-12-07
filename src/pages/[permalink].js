@@ -36,13 +36,13 @@ const SingleProduct = ({ handleAddToCart }) => {
                 <Grid item xs={12} md={6}>
                   {
                     product ? product.image ? product.image.url ? <Box>
-                      <img src={product.image.url} className='img-fluid' alt='product' />
+                      <img src={product.image.url} className='img-fluid' alt='product' loading='lazy' />
                     </Box> : <Box>
-                      <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhQ1WTybaZOrpdFETEjp60oPBx0BVXTn3Q4uqsTnKSww8LB_F4IR2RV1im03isOdUo5Lg&usqp=CAU'} className='img-fluid' alt='dummy' />
+                      <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhQ1WTybaZOrpdFETEjp60oPBx0BVXTn3Q4uqsTnKSww8LB_F4IR2RV1im03isOdUo5Lg&usqp=CAU'} className='img-fluid' alt='dummy' loading='lazy' />
                     </Box> : <Box>
-                      <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhQ1WTybaZOrpdFETEjp60oPBx0BVXTn3Q4uqsTnKSww8LB_F4IR2RV1im03isOdUo5Lg&usqp=CAU'} className='img-fluid' alt='dummy' />
+                      <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhQ1WTybaZOrpdFETEjp60oPBx0BVXTn3Q4uqsTnKSww8LB_F4IR2RV1im03isOdUo5Lg&usqp=CAU'} className='img-fluid' alt='dummy' loading='lazy' />
                     </Box> : <Box>
-                      <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhQ1WTybaZOrpdFETEjp60oPBx0BVXTn3Q4uqsTnKSww8LB_F4IR2RV1im03isOdUo5Lg&usqp=CAU'} className='img-fluid' alt='dummy' />
+                      <img src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhQ1WTybaZOrpdFETEjp60oPBx0BVXTn3Q4uqsTnKSww8LB_F4IR2RV1im03isOdUo5Lg&usqp=CAU'} className='img-fluid' alt='dummy' loading='lazy' />
                     </Box>
                   }
                 </Grid>

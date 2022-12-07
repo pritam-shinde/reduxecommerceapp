@@ -17,7 +17,7 @@ const Home = ({handleAddToCart}) => {
                                 products.map(product => <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
                                     <Box component={Paper} className="shadow">
                                         <Box>
-                                            <img src={product.image ? product.image.url ? product.image.url : "http://dummy.tcdw.org/sqrpop" : "http://dummy.tcdw.org/sqrpop"} className='img-fluid' alt="product" />
+                                            <img src={product.image ? product.image.url ? product.image.url : "http://dummy.tcdw.org/sqrpop" : "http://dummy.tcdw.org/sqrpop"} className='img-fluid' alt="product" loading='lazy' />
                                         </Box>
                                         <Box p={1}>
                                             <Typography variant='h5' align='center'><Link to={`product/${product.permalink}`} className="text-decoration-none text-dark">{product.name}</Link></Typography>

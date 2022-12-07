@@ -6,13 +6,14 @@ import Router from './router'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setProducts } from './redux/action/productAction'
+import { generateCheckoutToken } from './redux/action/checkoutAction'
 import { setCart } from './redux/action/cartAction'
 
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation()
   const dispatch = useDispatch()
-  const cart = useSelector((state)=> state.cartReducer.cart)
+  const cart = useSelector((state) => state.cartReducer.cart)
 
   const fetchProducts = async () => {
     const { data: products } = await commerce.products.list();
@@ -23,16 +24,21 @@ const App = () => {
     dispatch(setCart(await commerce.cart.retrieve()))
   }
 
-  const handleAddToCart = async(productId, quantity) =>{
+  const handleAddToCart = async (productId, quantity) => {
     dispatch(setCart(await commerce.cart.add(productId, quantity)))
   }
 
-  const handleRemoveItemFromCart = async(productId) =>{
+  const handleRemoveItemFromCart = async (productId) => {
     dispatch(setCart(await commerce.cart.remove(productId)))
   }
 
-  const handleCartUpdate = async(productId, quantity)=>{
-    dispatch(setCart(await commerce.cart.update(productId, {quantity})))
+  const handleCartUpdate = async (productId, quantity) => {
+    dispatch(setCart(await commerce.cart.update(productId, { quantity })))
+  }
+
+  const handlegenerateCheckoutToken = async () => {
+    const checkoutToken = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
+    dispatch(generateCheckoutToken(checkoutToken))
   }
 
   useEffect(() => {
@@ -42,6 +48,10 @@ const App = () => {
   useEffect(() => {
     fetchProducts()
   }, [])
+
+  useEffect(() => {
+    if (cart.id !== undefined) { handlegenerateCheckoutToken() }
+  },[cart])
 
   return (
     <>
@@ -54,7 +64,7 @@ const App = () => {
             <Box>
               <IconButton onClick={() => navigate('/cart/')}>
                 <Badge color='secondary' badgeContent={cart.total_items}>
-                <ShoppingBag />
+                  <ShoppingBag />
                 </Badge>
               </IconButton>
             </Box></> : null

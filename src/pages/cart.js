@@ -23,7 +23,7 @@ const Cart = ({ handleRemoveItemFromCart, handleCartUpdate }) => {
                       cart.line_items.map(product => <Box p={1} mb={3} key={product.id} component={Paper} className="shadow">
                         <Grid container spacing={1}>
                           <Grid item xs={12} sm={2}>
-                            <img src={product.image ? product.image.url ? product.image.url : "http://dummy.tcdw.org/sqrpop" : "http://dummy.tcdw.org/sqrpop"} alt="product" className='img-fluid' />
+                            <img src={product.image ? product.image.url ? product.image.url : "http://dummy.tcdw.org/sqrpop" : "http://dummy.tcdw.org/sqrpop"} alt="product" className='img-fluid' loading='lazy' />
                           </Grid>
                           <Grid item xs={12} sm={10}>
                             <Box className='d-flex justify-content-end'>
@@ -34,7 +34,6 @@ const Cart = ({ handleRemoveItemFromCart, handleCartUpdate }) => {
                             <Box className='d-flex align-items-center'>
                               <IconButton className='me-2' onClick={() => handleCartUpdate(product.id, product.quantity - 1)}><Remove /></IconButton><Box><strong>{product.quantity}</strong></Box><IconButton className='ms-2' onClick={() => handleCartUpdate(product.id, product.quantity + 1)} ><Add /></IconButton>
                             </Box>
-                            <button className='btn btn-danger my-3' >ADD TO CART</button>
                           </Grid>
                         </Grid>
                       </Box>)
